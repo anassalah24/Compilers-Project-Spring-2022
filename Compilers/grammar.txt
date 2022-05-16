@@ -1,0 +1,5 @@
+STMT-SEQ -> STMT-SEQ STATEMENT | STATEMENT
+STATEMENT -> IF-STMT | ASS-STMT
+IF-STMT -> if number then STMT-SEQ end
+ASS-STMT -> id := FACTOR ;
+FACTOR -> id | number

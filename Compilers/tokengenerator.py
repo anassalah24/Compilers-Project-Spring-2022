@@ -15,14 +15,47 @@ def tokengenerator(sentence):
         'ILLEGAL',
         'ILLEGALCOLON',
         'ILLEGALPLUS',
-        'ILLEGALMINUS'
+        'ILLEGALMINUS',
+        'ILLEGAL_ID'
         ]
         
         reserved = {
             'if' : 'IF',
+            'IF' : 'IF',
+            'If' : 'IF',
+            'iF' : 'IF',
             'then' : 'THEN',
+            'THEN' : 'THEN',
+            'Then' : 'THEN',
+            'tHen' : 'THEN',
+            'thEn' : 'THEN',
+            'theN' : 'THEN',
+            'THen' : 'THEN',
+            'ThEn' : 'THEN',
+            'TheN' : 'THEN',
+            'tHEn' : 'THEN',
+            'tHeN' : 'THEN',
+            'thEN' : 'THEN',
             'end' : 'END',
+            'END' : 'END',
+            'End' : 'END',
+            'eNd' : 'END',
+            'enD' : 'END',
+            'ENd' : 'END',
+            'EnD' : 'END',
+            'eND' : 'END',
             'else' : 'ELSE',
+            'ELSE' : 'ELSE',
+            'Else' : 'ELSE',
+            'eLse' : 'ELSE',
+            'elSe' : 'ELSE',
+            'elsE' : 'ELSE',
+            'ELse' : 'ELSE',
+            'ElSe' : 'ELSE',
+            'ElsE' : 'ELSE',
+            'eLSe' : 'ELSE',
+            'eLsE' : 'ELSE',
+            'elSE' : 'ELSE',
         }
         tokens += reserved.values()
         # Regular expressions for tokens
@@ -31,6 +64,7 @@ def tokengenerator(sentence):
         t_ASSIGNMENT = r':='
         t_SEMICOLON = r';'
         t_ILLEGAL = r'[$&,=?@#|<>./\'\"`^*()%!]'
+        t_ILLEGAL_ID = r'[-+]?[0-9]+[a-zA-Z_]+'
         t_ILLEGALCOLON = r':'
         t_ILLEGALPLUS = r'[+]'
         t_ILLEGALMINUS = r'[-]'
