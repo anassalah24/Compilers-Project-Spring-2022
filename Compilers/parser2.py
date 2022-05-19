@@ -357,7 +357,7 @@ class SLRParser:
         for node in nodelist:
             node = 'white'
         drawparse(nodedict,edgeslist,nodelist)
-        self.generate_automaton()
+        # self.generate_automaton()
         return results
 
     def print_LR_parser(self, results):
@@ -517,9 +517,20 @@ def drawparse(nodedict , edgelist ,nodelist):
     mngr.window.showMaximized()
     plt.show()
 
+def main3():
+    f = open("grammar.txt", "r")
+
+    G = Grammar(f.read())
+    slr_parser = SLRParser(G)
+    slr_parser.print_info()
 
 
+def main2():
+    f = open("grammar.txt", "r")
 
+    G = Grammar(f.read())
+    slr_parser = SLRParser(G)
+    slr_parser.generate_automaton()
 
 def main(tokens):
 
@@ -529,7 +540,7 @@ def main(tokens):
 
     G = Grammar(f.read())
     slr_parser = SLRParser(G)
-    slr_parser.print_info()
+    # slr_parser.print_info()
     results = slr_parser.LR_parser(tokens)
     slr_parser.print_LR_parser(results)
 

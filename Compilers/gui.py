@@ -7,6 +7,8 @@ from inputgenerator import inputgenerator
 from IdentifierDFA import id_dfa
 from numberDFA import number_dfa
 from parser2 import parseinput
+from parser2 import main2
+from parser2 import main3
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -120,7 +122,7 @@ class Ui_MainWindow(object):
         self.textBrowser = QtWidgets.QTextBrowser(self.frame)
         self.textBrowser.setGeometry(QtCore.QRect(20, 390, 321, 401))
         self.textBrowser.setObjectName("textBrowser")
-        self.pushButton_5 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_5 = QtWidgets.QPushButton(self.frame,clicked=lambda : self.canonical())
         self.pushButton_5.setGeometry(QtCore.QRect(400, 630, 351, 81))
         font = QtGui.QFont()
         font.setFamily("Cambria")
@@ -129,13 +131,22 @@ class Ui_MainWindow(object):
         self.pushButton_5.setStyleSheet("color: rgb(0, 155, 232);")
         self.pushButton_5.setObjectName("pushButton_5")
         self.pushButton_6 = QtWidgets.QPushButton(self.frame , clicked =lambda : self.parsetree())
-        self.pushButton_6.setGeometry(QtCore.QRect(400, 710, 351, 81))
+        self.pushButton_6.setGeometry(QtCore.QRect(400, 781, 351, 81))
         font = QtGui.QFont()
         font.setFamily("Cambria")
         font.setPointSize(16)
         self.pushButton_6.setFont(font)
         self.pushButton_6.setStyleSheet("color: rgb(0, 155, 232);")
         self.pushButton_6.setObjectName("pushButton_6")
+
+        self.pushButton_7 = QtWidgets.QPushButton(self.frame, clicked=lambda: self.steps())
+        self.pushButton_7.setGeometry(QtCore.QRect(400, 710, 351, 72))
+        font = QtGui.QFont()
+        font.setFamily("Cambria")
+        font.setPointSize(16)
+        self.pushButton_7.setFont(font)
+        self.pushButton_7.setStyleSheet("color: rgb(0, 155, 232);")
+        self.pushButton_7.setObjectName("pushButton_7")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1204, 26))
@@ -175,8 +186,9 @@ class Ui_MainWindow(object):
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Cambria\'; font-size:11pt; color:#ff0000;\">In each state the missing transitions all goes to a dead state,</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Cambria\'; font-size:11pt; color:#ff0000;\">this dead state only appears in the DFA when a transition to it is needed.</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Cambria\'; font-size:11pt; color:#ff0000;\">initially it is omitted from DFA to avoid crowded DFA with many lines for a better view.</span></p></body></html>"))
-        self.pushButton_5.setText(_translate("MainWindow", "Grammar"))
+        self.pushButton_5.setText(_translate("MainWindow", "Canonical Diagram"))
         self.pushButton_6.setText(_translate("MainWindow", "Parse Tree"))
+        self.pushButton_7.setText(_translate("MainWindow", "Parsing Steps"))
     
     def updatetokens(self):
         self.textEdit_2.clear()
@@ -190,8 +202,12 @@ class Ui_MainWindow(object):
     def parsetree(self):
         parseinput(self.textEdit.toPlainText())
         
-        
-   
+    def canonical(self):
+        main2()
+
+    def steps(self):
+        main3()
+
         
 
 
