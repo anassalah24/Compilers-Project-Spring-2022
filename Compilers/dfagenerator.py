@@ -4,7 +4,8 @@ from sympy import true
 
 from visual_automata.fa.nfa import VisualNFA
 
-
+#trial
+print("hello")
 def dfagenerator(myinput):
     
     myDfa = VisualNFA(
